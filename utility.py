@@ -1,4 +1,4 @@
-"""@package
+"""@package PySideWidgetCollection.utility
 @brief Useful qt utility functions
 @date 2014/11/20
 @version 1.0

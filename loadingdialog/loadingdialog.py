@@ -1,4 +1,4 @@
-"""@package
+"""@package PySideWidgetCollection.loadingdialog.loadingdialog
 @brief A loading screen for time consuming processes.
 @date 2016/02/05
 @version 2.0
@@ -10,16 +10,16 @@ import logging
 
 from PySide import QtCore, QtGui
 
-import utils
+from PySideWidgetCollection import utility
 __all__ = ['LoadingDialog']
 
 
-base_class, form_class = utils.load_ui_bases(__file__, 'LoadingDialog')
+base_class, form_class = utility.load_ui_bases(__file__, 'LoadingDialog')
 
 
 class LoadingDialog(base_class, form_class):
 
-    """A dialog that can be used as a loading screen.
+    """Show a screen while running a background process.
 
     The dialog will be shown until the given callback has run.
     """
@@ -55,14 +55,16 @@ class LoadingDialog(base_class, form_class):
 
         # Show the loading dialog
         self.exec_()
-    # END def __init__
+    # end def __init__
 
     def paintEvent(self, event):
-        """The paint event for the loading dialog.
+        """Overridden to show the dialog while running the callback.
 
-        Hijacked to provide the possibility to display this dialog
-        until the callback has been executed.
-        @param event the QPaintEvent
+        After the first paint event, that paints the widget on the
+        screen, the callback is launched. This ensures that the dialog
+        is visible while running the background task and makes it
+        possible to close the dialog afterwards.
+        @param event The QPaintEvent
         """
         if not self.painted:
             self.painted = True
@@ -77,6 +79,6 @@ class LoadingDialog(base_class, form_class):
                 logging.exception(e)
             # end try to
             self.close()
-        # END if
-    # END def paintEvent
-# END class LoadingDialog
+        # end if
+    # end def paintEvent
+# end class LoadingDialog
