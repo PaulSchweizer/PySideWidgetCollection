@@ -16,6 +16,8 @@ An extended ConfirmDialog with a bunch if features:
 Make a Widget visuall more appealing by making it frameless. This setup provides a title bar and a resize button to re enable the features of a framed widget. The title bar is also enriched with a customizable help button.
 
 ## LoadingDialog
+![Loading Dialog](/loadingdialog.jpg)
+
 Display a Dialog with information while waiting for the execution of a callback.
 
 ## Notifier
