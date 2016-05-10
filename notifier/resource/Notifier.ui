@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>104</width>
-    <height>218</height>
+    <height>149</height>
    </rect>
   </property>
   <property name="palette">
@@ -68,75 +68,6 @@
      <number>9</number>
     </property>
     <item>
-     <widget class="QWidget" name="topbar_hlay" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="accessibleName">
-       <string>topbar_hlay</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <spacer name="topbar_hspace">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QToolButton" name="close_btn">
-         <property name="styleSheet">
-          <string notr="true">QToolButton{
-	padding:3px;
-	background-color:#911;
-	color:#fff;
-	border: 0 solid;
-}
-QToolButton::hover{
-	background-color:#c44;
-	color:#fff;
-	border:0 solid;
-}</string>
-         </property>
-         <property name="text">
-          <string>X</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>24</width>
-           <height>24</height>
-          </size>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-         <property name="autoRaise">
-          <bool>true</bool>
-         </property>
-         <property name="arrowType">
-          <enum>Qt::NoArrow</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="header_vlay"/>
-    </item>
-    <item>
      <layout class="QVBoxLayout" name="content_vlay">
       <property name="topMargin">
        <number>0</number>
@@ -145,33 +76,20 @@ QToolButton::hover{
        <widget class="QListWidget" name="listWidget">
         <item>
          <property name="text">
-          <string>New Rig</string>
+          <string>Notification A</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>New Hair Setup</string>
+          <string>Notification B</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>New Pusblish</string>
+          <string>Notification C</string>
          </property>
         </item>
        </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </item>
@@ -183,7 +101,7 @@ QToolButton::hover{
      <x>0</x>
      <y>0</y>
      <width>104</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
