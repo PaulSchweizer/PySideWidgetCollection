@@ -2,6 +2,7 @@
 An assortment of Widgets and setups for PySide.
 
 ## ConfirmDialog
+[[https://github.com/paulSchweizer/PySideWidgetCollection/blob/master/confirmdialog.jpg|alt=confirmdialog]]
 An extended ConfirmDialog with a bunch if features:
 1. It slides with an animation onto the screen, grabbing the user's attention and focus
 2. Option for adding a custom Widget to the dialog.
