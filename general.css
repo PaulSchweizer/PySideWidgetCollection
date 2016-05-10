@@ -1,0 +1,560 @@
+/*
+light_grey = rgb(93, 93, 93)
+regular_grey = rgb(68, 68, 68)
+dark_grey = rgb(43, 43, 43)
+
+light_blue = rgb(116, 165, 255)
+regular_blue = rgb(100, 144, 227)
+
+regular_orange = rgb(255, 149, 0)
+
+
+default_padding = 12px
+default_radius = 6px
+
+
+text_color = rgb(230, 230, 230)
+*/
+
+/* QPushButtons ----------------------------------------------------- */
+QPushButton{
+    background: rgb(93, 93, 93);
+    color: rgb(230, 230, 230);
+    font: bold;
+
+    border-radius: 6px;
+    border: 0px solid;
+
+    padding: 12px;
+    margin: 0px;
+}
+
+QPushButton:hover{
+    background: rgb(100, 144, 227);
+}
+
+QPushButton:pressed{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+QPushButton:checked:hover{
+    background: rgb(255, 149, 0);
+}
+
+/* with properties */
+QPushButton[rnkPropertySide='left']{
+    padding: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 0px;
+}
+
+QPushButton[rnkPropertySide='center']{
+    padding: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+QPushButton[rnkPropertySide='right']{
+    padding: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 6px;
+}
+
+QPushButton[rnkPropertyImportant=true]{
+    background: rgb(130, 130, 130);
+}
+
+QPushButton[rnkPropertyImportant=true]:hover{
+    background: rgb(255, 149, 0);
+}
+
+QPushButton[rnkPropertyPadding='none']{
+    padding: 0px;
+}
+
+QPushButton[rnkPropertyPadding='small']{
+    padding: 4px;
+}
+
+QPushButton[rnkPropertyPadding='medium']{
+    padding: 8px;
+}
+
+QPushButton[rnkPropertyPadding='large']{
+    padding: 12px;
+}
+
+QPushButton[rnkPropertyRadius='none']{
+    border-radius: 0px;
+}
+
+QPushButton[rnkPropertyRadius='small']{
+    border-radius: 2px;
+}
+
+QPushButton[rnkPropertyRadius='medium']{
+    border-radius: 4px;
+}
+
+QPushButton[rnkPropertyRadius='large']{
+    border-radius: 6px;
+}
+
+QPushButton#close_btn{
+    background: rgb(190, 0, 0);
+}
+
+QPushButton#close_btn:hover{
+    background: rgb(140, 0, 0);
+}
+
+QPushButton#color_btn{
+    padding: 0px;
+    margin: 0px;
+}
+
+QPushButton#color_btn:hover{
+    background: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+
+/* QCheckBox -------------------------------------------------------- */
+QCheckBox{
+    padding: 2px 0px 2px 0px;
+    border-radius: 6px;
+}
+
+QCheckBox::indicator{
+    width: 16px;
+    height: 16px;
+    background: rgb(43, 43, 43);
+    border-radius: 3px;
+}
+
+QCheckBox:checked{
+    color: rgb(116, 165, 255);
+}
+
+QCheckBox::indicator:checked{
+    background: rgb(116, 165, 255);
+    width: 10px;
+    height: 10px;
+    border: 3px solid rgb(43, 43, 43);
+}
+
+QCheckBox::indicator:hover{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+    stop: 0.00 rgb(68, 68, 68),
+    stop: 0.45 rgb(68, 68, 68),
+    stop: 0.55 rgb(43, 43, 43),
+    stop: 1.00 rgb(43, 43, 43));
+}
+
+QCheckBox::indicator:checked:hover{
+    background: rgb(255, 149, 0);
+    width: 10px;
+    height: 10px;
+    border: 3px solid rgb(43, 43, 43);
+}
+
+QCheckBox:checked:hover{
+    color: rgb(255, 149, 0);
+}
+
+
+
+
+
+/* QAbstractScrolArea ----------------------------------------------- */
+QAbstractScrollArea{
+    background: rgb(43, 43, 43);
+    color: rgb(230, 230, 230);
+    border-radius: 3px;
+    padding: 6px;
+}
+
+QAbstractScrollArea::item{
+    background: rgb(43, 43, 43);
+    padding: 6px;
+}
+
+QAbstractScrollArea::branch{
+    background: rgb(43, 43, 43);
+    padding: 6px;
+}
+
+QAbstractScrollArea::item:alternate{
+    background: rgb(50, 50, 50);
+    padding: 6px;
+}
+
+QAbstractScrollArea::branch::alternate{
+    background: rgb(50, 50, 50);
+    padding: 6px;
+}
+
+/* selected */
+QAbstractScrollArea::item:selected{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::item:selected:!active{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::item:selected:active{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::branch:selected{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::branch:selected:!active{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::branch:selected:active{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+
+/* hover */
+QAbstractScrollArea::item:hover{
+    background: rgb(100, 144, 227);
+}
+
+QAbstractScrollArea::branch::hover{
+    background: rgb(100, 144, 227);
+}
+
+/* selected hover */
+QAbstractScrollArea::item:selected:hover:active{
+    background: rgb(255, 149, 0);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::item:selected:hover:!active{
+    background: rgb(255, 149, 0);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::branch:selected:hover:active{
+    background: rgb(255, 149, 0);
+    color: rgb(255, 255, 255);
+}
+
+QAbstractScrollArea::branch:selected:hover:!active{
+    background: rgb(255, 149, 0);
+    olor: rgb(255, 255, 255);
+}
+
+/* categories */
+QAbstractScrollArea::branch:has-children{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+    stop: 0.00 rgb(220, 220, 220),
+    stop: 0.25 rgb(220, 220, 220),
+    stop: 0.30 rgb(43, 43, 43)
+    stop: 1.00 rgb(43, 43, 43));
+    padding: 6px;
+}
+
+QAbstractScrollArea::branch:alternate:has-children{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+    stop: 0.00 rgb(220, 220, 220),
+    stop: 0.25 rgb(220, 220, 220),
+    stop: 0.30 rgb(50, 50, 50)
+    stop: 1.00 rgb(50, 50, 50));
+    padding: 6px;
+}
+
+QAbstractScrollArea::branch:hover:has-children{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+    stop: 0.00 rgb(220, 220, 220),
+    stop: 0.25 rgb(220, 220, 220),
+    stop: 0.30 rgb(100, 144, 227)
+    stop: 1.00 rgb(100, 144, 227));
+    padding: 6px;
+}
+
+QAbstractScrollArea::branch:has-children:alternate:hover{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+    stop: 0.00 rgb(220, 220, 220),
+    stop: 0.25 rgb(220, 220, 220),
+    stop: 0.30 rgb(100, 144, 227)
+    stop: 1.00 rgb(100, 144, 227));
+    padding: 6px;
+}
+
+QAbstractScrollArea::branch:has-children:selected:active{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+    stop: 0.00 rgb(220, 220, 220),
+    stop: 0.25 rgb(220, 220, 220),
+    stop: 0.30 rgb(116, 165, 255),
+    stop: 1.00 rgb(116, 165, 255));
+    padding: 6px;
+}
+
+QAbstractScrollArea::branch:has-children:selected:hover:active{
+    padding: 6px;
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+    stop: 0.00 rgb(220, 220, 220),
+    stop: 0.25 rgb(220, 220, 220),
+    stop: 0.30 rgb(255, 149, 0),
+    stop: 1.00 rgb(255, 149, 0));
+}
+
+/* properties */
+QAbstractScrollArea[rnkPropertyMenu=true]{
+    background: rgba(0, 0, 0, 0);
+    padding: 4px;
+    margin: 2px;
+    border: 2px solid rgb(100, 144, 227);
+    border-radius: 6px;
+}
+
+
+
+
+
+
+
+/* QScrollBar ------------------------------------------------------- */
+/* vertical */
+QScrollBar:vertical {
+    background: rgb(68, 68, 68);
+    margin: 19px 0px 19px 0px;
+    width: 12px;
+}
+
+QScrollBar::handle:vertical {
+    background: rgb(93, 93, 93);
+    border-radius: 3px;
+    border: 1px solid rgb(43, 43, 43);
+    min-height: 25px;
+}
+
+ QScrollBar::add-line:vertical {
+    background: rgb(93, 93, 93);
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 3px;
+    height: 18px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    background: rgb(93, 93, 93);
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 3px;
+    height: 18px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+      background: none;
+}
+
+QScrollBar::handle:vertical:hover,
+QScrollBar::add-line:vertical:hover,
+QScrollBar::sub-line:vertical:hover {
+    background: rgb(100, 144, 227);
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* horizontal */
+QScrollBar:horizontal {
+    background: rgb(68, 68, 68);
+    margin: 0px 19px 0px 19px;
+    height: 12px;
+}
+QScrollBar::handle:horizontal {
+    background: rgb(93, 93, 93);
+    border-radius: 3px;
+    border: 1px solid rgb(43, 43, 43);
+    min-width: 25px;
+}
+ QScrollBar::add-line:horizontal {
+    background: rgb(93, 93, 93);
+    border-radius: 3px;
+    border: 1px solid rgb(43, 43, 43);
+    width: 18px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    background: rgb(93, 93, 93);
+    border-radius: 3px;
+    border: 1px solid rgb(43, 43, 43);
+    width:18px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+      background: none;
+}
+QScrollBar::handle:horizontal:hover,
+QScrollBar::add-line:horizontal:hover,
+QScrollBar::sub-line:horizontal:hover {
+    background: rgb(100, 144, 227);
+}
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+
+
+
+
+/* QTabWidget ------------------------------------------------------- */
+QTabWidget{
+    border: 0px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius:3px;
+}
+
+QTabBar:tab{
+    background: rgb(93, 93, 93);
+    color: rgb(230, 230, 230);
+    padding: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar:tab:hover{
+    background: rgb(100, 144, 227);
+    color: rgb(230, 230, 230);
+    padding: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+QTabBar:tab:selected{
+    background: rgb(116, 165, 255);
+    color: rgb(255, 255, 255);
+}
+QTabBar:tab:selected:hover{
+    background: rgb(255, 149, 0);
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+/* QLineEdit -------------------------------------------------------- */
+QLineEdit{
+    background: rgb(43, 43, 43);
+    color: rgb(100, 144, 227);
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 6px;
+    padding: 4px;
+}
+
+
+
+
+/* QSpliter --------------------------------------------------------- */
+QSplitter:handle{
+    background: rgb(43, 43, 43);
+    padding: 1px;
+}
+
+
+
+/* QLabel ----------------------------------------------------------- */
+QLabel[rnkPropertyTitle='true']{
+    color: rgb(255, 255, 255);
+    font: bold 15px;
+}
+
+
+
+/* QProgressBar ----------------------------------------------------- */
+QProgressBar{
+    background: rgb(43, 43, 43);
+    border: 3px solid rgb(43, 43, 43);
+    border-radius: 3px;
+    text-align: center;
+    height: 14px;
+}
+
+QProgressBar::chunk {
+    background: rgb(100, 144, 227);
+    width: 10px;
+}
+
+
+/* QWidget ---------------------------------------------------------- */
+QWidget[rnkPropertyBackground='dark']{
+    background: rgb(43, 43, 43);
+    margin: 0px;
+    padding: 0px;
+    border-radius: 3px;
+}
+
+QWidget[rnkPropertyBackground='medium']{
+    background: rgb(68, 68, 68);
+    margin: 0px;
+    padding: 0px;
+    border-radius: 3px;
+}
+
+QWidget[rnkPropertyBackground='light']{
+    background: rgb(93, 93, 93);
+    margin: 0px;
+    padding: 0px;
+    border-radius: 3px;
+}
+
+QWidget[rnkPropertyHover=true]:hover{
+    margin: 0px;
+    padding: 0px;
+    border-radius: 3px;
+    border: 2px solid rgb(70, 116, 201);
+}
+
+
+/* QComboBox -------------------------------------------------------- */
+QComboBox{
+    background: rgb(93, 93, 93);
+}
+
+QComboBox QAbstractItemView {
+    border: 2px solid rgb(116, 165, 255);
+    selection-background-color: rgb(100, 144, 227);
+    background: rgb(50, 50, 50);
+}
+
+
+/* */
+Line#lala{
+    background: rgb(100, 144, 227);
+}
+
+
