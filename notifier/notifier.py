@@ -45,7 +45,6 @@ class Notifier(base_class, form_class):
         self.width = 150
         self.height = 100
         self._init_tray_icon()
-        self._init_signals()
         self._close_action = False
         self.setWindowFlags(QtCore.Qt.Widget | QtCore.Qt.FramelessWindowHint)
     # end def __init__
@@ -61,11 +60,6 @@ class Notifier(base_class, form_class):
         self.system_tray_icon.activated.connect(self._tray_icon_activated)
         self.system_tray_icon.exit_action.triggered.connect(self._exit)
     # end def _tray_icon
-
-    def _init_signals(self):
-        """Initialize the signals."""
-        self.close_btn.clicked.connect(self.close)
-    # end def _init_widgets
 
     def _tray_icon_activated(self, reason):
         """Show/hide the Widget when the icon is double clicked.
