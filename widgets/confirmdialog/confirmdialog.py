@@ -7,7 +7,7 @@
 """
 from PySide import QtCore, QtGui
 
-from PySideWidgetCollection import utility
+from widgets import utility
 __all__ = ['WindowHeader', 'ConfirmDialog']
 
 
@@ -494,3 +494,12 @@ class ConfirmDialog(cd_base_class, cd_form_class):
         # end if
     # end def paintEvent
 # end class ConfirmDialog
+
+
+if __name__ == '__main__':
+
+    import sys
+
+    app = QtGui.QApplication(sys.argv)
+    dialog = ConfirmDialog()
+    sys.exit(app.exec_())

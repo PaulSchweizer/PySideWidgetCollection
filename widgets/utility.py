@@ -9,7 +9,11 @@ import os
 import xml.etree.ElementTree as xml
 from cStringIO import StringIO
 
-import shiboken
+try:
+    import Shiboken as shiboken
+except:
+    import shiboken
+
 import pysideuic
 from PySide import QtCore, QtGui
 
@@ -76,7 +80,6 @@ def get_cpp_pointer(widget):
     @param widget the widget
     @return the cpp pointer
     """
-    import shiboken
     return long(shiboken.getCppPointer(widget)[0])
 # end def get_cpp_pointer
 
@@ -131,7 +134,7 @@ def set_stylesheet(widget, widget_file=None):
     @param widget_file the file location of the widget file, used to
                        retrieve the stylesheet file for the widget
     """
-    general_css_file = os.path.join(os.path.dirname(__file__), 'general.css')
+    general_css_file = os.path.join(os.path.dirname(__file__), 'resource', 'general.css')
     with open(general_css_file, 'r') as f:
         general_css = f.read()
     # end reading the general css file

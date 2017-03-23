@@ -10,7 +10,7 @@ import logging
 
 from PySide import QtCore, QtGui
 
-from PySideWidgetCollection import utility
+from widgets import utility
 __all__ = ['LoadingDialog']
 
 
@@ -33,25 +33,30 @@ class LoadingDialog(base_class, form_class):
         self.return_value = None
         self.painted = False
 
-        # Set the window opacity
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        self.setAttribute(QtCore.Qt.WA_PaintOnScreen)
+        # Full screen
+        desktop = QtGui.QApplication.instance().desktop()
+        available_geometry = desktop.screenGeometry(QtGui.QCursor().pos())
+        self.setGeometry(available_geometry)
+        self.image_lbl.setGeometry(available_geometry)
+        self.text_lbl.setGeometry(available_geometry)
+
+        # Set the window frame less mode
         self.setWindowFlags(QtCore.Qt.Widget | QtCore.Qt.FramelessWindowHint)
 
-        # Fill the screen
-        desktop = QtGui.QApplication.instance().desktop()
-        self.setGeometry(desktop.screenGeometry(QtGui.QCursor().pos()))
+        # Grab current screen
+        pxm = QtGui.QPixmap.grabWindow(QtGui.QApplication.desktop().winId())
 
-        # Set the semi-transparent background
-        palette = QtGui.QPalette()
-        pxm = QtGui.QPixmap(os.path.join(os.path.dirname(__file__), 'resource',
-                                         'semi_transparent_bg.png'))
-        brush = QtGui.QBrush(pxm)
-        palette.setBrush(QtGui.QPalette.Window, brush)
-        self.setPalette(palette)
+        # Blur it
+        effect = QtGui.QGraphicsBlurEffect()
+        self.image_lbl.setGraphicsEffect(effect)
+        effect.setBlurRadius(12)
 
-        # Set the text
-        self.label.setText(text)
+        # Set the image
+        self.image_lbl.setPixmap(pxm)
+
+        # Set the text and put it on top of the image
+        self.text_lbl.setText(text)
+        self.text_lbl.setParent(self)
 
         # Show the loading dialog
         self.exec_()
@@ -82,3 +87,12 @@ class LoadingDialog(base_class, form_class):
         # end if
     # end def paintEvent
 # end class LoadingDialog
+
+
+if __name__ == '__main__':
+
+    import sys
+
+    app = QtGui.QApplication(sys.argv)
+    dialog = LoadingDialog()
+    sys.exit(app.exec_())
