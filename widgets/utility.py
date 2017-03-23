@@ -18,6 +18,17 @@ import pysideuic
 from PySide import QtCore, QtGui
 
 
+def ui_class(widget_file, widget_name):
+    """Build a class from a designer .ui file."""
+    b, f = load_ui_type(get_ui_file_path(widget_file, widget_name))
+    class BaseUi(b, f):
+        def __init__(self, parent=None):
+            super(BaseUi, self).__init__(parent=parent)
+            self.setupUi(self)
+    return BaseUi
+# end def ui_class
+
+
 def load_ui_type(ui_file):
     """Load a ui file for PySide.
 
