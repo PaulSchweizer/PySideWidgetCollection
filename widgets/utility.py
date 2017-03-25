@@ -5,7 +5,7 @@ from cStringIO import StringIO
 
 try:
     import Shiboken as shiboken
-except:
+except ImportError:
     import shiboken
 
 import pysideuic
