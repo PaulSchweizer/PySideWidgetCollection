@@ -8,7 +8,6 @@ __all__ = ['LoadingDialog']
 
 
 class LoadingDialog(utility.ui_class(__file__, 'LoadingDialog')):
-
     """Show a screen while running a background process.
 
     The dialog will be shown until the given callback has terminated.
