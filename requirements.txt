@@ -1,5 +1,4 @@
 PySide
-shiboken
 Qt.py
 codeclimate-test-reporter
 codacy-coverage

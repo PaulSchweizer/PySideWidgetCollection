@@ -3,11 +3,6 @@ import os
 import xml.etree.ElementTree as xml
 from cStringIO import StringIO
 
-try:
-    import Shiboken as shiboken
-except ImportError:
-    import shiboken
-
 import pysideuic
 from Qt import QtCore, QtWidgets
 
