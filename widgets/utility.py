@@ -4,7 +4,7 @@ import xml.etree.ElementTree as xml
 from cStringIO import StringIO
 
 import pysideuic
-from Qt import QtCore, QtWidgets
+from Qt import QtWidgets
 
 
 def ui_class(widget_file, widget_name):
