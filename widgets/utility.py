@@ -15,7 +15,7 @@ except:
     import shiboken
 
 import pysideuic
-from PySide import QtCore, QtGui
+from Qt import QtCore, QtWidgets
 
 
 def ui_class(widget_file, widget_name):
@@ -49,7 +49,7 @@ def load_ui_type(ui_file):
 
         # Fetch the base_class and form_class based on their type
         # in the xml from designer
-        base_class = eval('QtGui.%s' % widget_class)
+        base_class = eval('QtWidgets.%s' % widget_class)
         form_class = frame['Ui_%s' % form_class]
         return base_class, form_class
     # end reading the ui file
@@ -60,7 +60,7 @@ def wrapinstance(ptr, base=None):
     """Utility to convert a pointer to a Qt class instance.
 
     @param ptr long or Swig instance, Pointer to QObject in memory
-    @param base QtGui.QWidget, (Optional) Base class to wrap with
+    @param base QtWidgets.QWidget, (Optional) Base class to wrap with
                  (Defaults to QObject, which should handle anything)
     @return QWidget or subclass instance
     """
@@ -73,12 +73,12 @@ def wrapinstance(ptr, base=None):
         metaObj = qObj.metaObject()
         cls = metaObj.className()
         superCls = metaObj.superClass().className()
-        if hasattr(QtGui, cls):
-            base = getattr(QtGui, cls)
-        elif hasattr(QtGui, superCls):
-            base = getattr(QtGui, superCls)
+        if hasattr(QtWidgets, cls):
+            base = getattr(QtWidgets, cls)
+        elif hasattr(QtWidgets, superCls):
+            base = getattr(QtWidgets, superCls)
         else:
-            base = QtGui.QWidget
+            base = QtWidgets.QWidget
         # end if
     # end if
     return shiboken.wrapInstance(long(ptr), base)
