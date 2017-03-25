@@ -42,7 +42,7 @@ def _load_ui_type(ui_file):
 
         # Fetch the base_class and form_class based on their type
         # in the xml from designer
-        base_class = eval('QtWidgets.%s' % widget_class)
+        base_class = getattr(QtWidgets, widget_class)
         form_class = frame['Ui_%s' % form_class]
         return base_class, form_class
     # end reading the ui file
