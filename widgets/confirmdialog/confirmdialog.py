@@ -18,7 +18,7 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
                  title='Confirm Dialog',
                  subtitle='Please cancel or confirm',
                  message=None,
-                 buttons=['Confirm', 'Cancel'],
+                 buttons=('Confirm', 'Cancel'),
                  default_button='Confirm',
                  cancel_button='Cancel',
                  inner_widget=None,
