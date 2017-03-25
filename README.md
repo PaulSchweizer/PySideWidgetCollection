@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f2f849a41c2c469ba08e6715a6067d60)](https://www.codacy.com/app/paulschweizer/PySideWidgetCollection?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PaulSchweizer/PySideWidgetCollection&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/PaulSchweizer/PySideWidgetCollection.svg?branch=master)](https://travis-ci.org/PaulSchweizer/PySideWidgetCollection) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f2f849a41c2c469ba08e6715a6067d60)](https://www.codacy.com/app/paulschweizer/PySideWidgetCollection?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PaulSchweizer/PySideWidgetCollection&amp;utm_campaign=Badge_Grade)
 
 # PySide-Custom-Widgets
 An assortment of Widgets and setups for PySide.
