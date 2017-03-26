@@ -1,6 +1,4 @@
 """A loading screen for time consuming processes."""
-import logging
-
 from Qt import QtCore, QtWidgets
 
 from widgets import utility
