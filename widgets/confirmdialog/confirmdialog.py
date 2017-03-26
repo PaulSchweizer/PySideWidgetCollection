@@ -4,6 +4,7 @@ from functools import partial
 from Qt import QtCore, QtWidgets
 
 from widgets import utility
+from widgets.loadingdialog.loadingdialog import LoadingDialog
 __all__ = ['ConfirmDialog']
 
 
@@ -15,6 +16,7 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
     """
 
     def __init__(self,
+                 parent=None,
                  title='Confirm Dialog',
                  subtitle='Please cancel or confirm',
                  message=None,
@@ -22,20 +24,22 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
                  default_button='Confirm',
                  cancel_button='Cancel',
                  inner_widget=None,
-                 size=None):
+                 size=None,
+                 auto_raise=True):
         """Initialize the ConfirmDialog.
 
         Args:
             title (str): The title for the dialog.
             message (str): The message to be displayed.
-            button (list of str): The buttons.
+            button (list[str]): The buttons.
             default_button (str): The preselected button.
             cancel_button (str): The cancel button.
             inner_widget (str): A qt widget that is to be displayed in
                                 the ConfirmDialog.
             size ((int, int)): The size of the dialog.
+            auto_raise (bool): Whether to automatically raise the dialog.
         """
-        super(ConfirmDialog, self).__init__()
+        super(ConfirmDialog, self).__init__(parent=parent)
         self.title = title
         self.subtitle = subtitle
         self.message = message
@@ -54,8 +58,24 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
 
         self._setup_ui()
         self._setup_buttons(buttons)
-        self.exec_()
+
+        self.background = LoadingDialog()
+
+        if auto_raise:
+            self.exec_()
     # end def __init__
+
+    def show(self):
+        """Show the blurred background."""
+        self.background.show()
+        super(ConfirmDialog, self).show()
+    # end def show
+
+    def exec_(self):
+        """Show the blurred background."""
+        self.background.show()
+        super(ConfirmDialog, self).exec_()
+    # end def exec_
 
     def _setup_ui(self):
         """Set up the UI.
@@ -67,7 +87,9 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
         self.setWindowTitle(self.title)
         self.title_lbl.setText(self.title)
         self.subtitle_lbl.setText(self.subtitle)
-        self.setWindowFlags(QtCore.Qt.Widget | QtCore.Qt.FramelessWindowHint)
+        self.setWindowFlags(QtCore.Qt.Widget |
+                            QtCore.Qt.FramelessWindowHint |
+                            QtCore.Qt.WindowStaysOnTopHint)
         if self.message is not None:
             self.message_lbl.setText(self.message)
         else:
@@ -102,7 +124,8 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
     def _focus_button(self, index):
         """Set the focus to the button behind the given index.
 
-        @param index the index of the focus button in the button list
+        Args:
+            index (int): The index of the focus button in the button list.
         """
         for i, button in enumerate(self.buttons):
             if i == index:
@@ -115,10 +138,16 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
     # end def _focus_button
 
     def showEvent(self, event):
-        """Execute the start animation."""
+        """Run the start animation."""
         self._start_animation()
-        super(ConfirmDialog, self).showEvent(event)
+        event.accept()
     # end def showEvent
+
+    def closeEvent(self, event):
+        """Close the blurred background too."""
+        self.background.close()
+        event.accept()
+    # end def closeEvent
 
     def keyPressEvent(self, event):
         """Integrate key signals into to dialog.
@@ -131,8 +160,6 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
                   a focussed button, that buttons click event is being
                  executed.
         * esc - aborts the confirm dialog by using the cancel action
-        @param event the key press event
-        @return a standard keyPressEvent
         """
         key = event.key()
         if key == QtCore.Qt.Key_Right or key == QtCore.Qt.Key_Left:
@@ -174,33 +201,27 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
     def confirm(self, button_name):
         """Confirm and closes the dialog.
 
-        The status is set to True and if the dialog is animated,
-        the end animation is started.
+        The status is set to True and if the dialog is animated, the
+        end animation is started.
+        Args:
+            button_name (str): The button pressed, if any.
         """
         self.status = True
         self.clicked_button = button_name
-        try:
-            self._end_animation()
-        except Exception as err:
-            print err
-            self.close()
-        # end try
+        self._end_animation()
     # end def confirm
 
     def cancel(self, button_name):
         """Cancel and close the dialog.
 
-        The status is set to False, and if the dialog is animated,
-        the end animation is started.
+        The status is set to False, and if the dialog is animated, the
+        end animation is started.
+        Args:
+            button_name (str): The button pressed, if any.
         """
         self.status = False
         self.clicked_button = button_name
-        try:
-            self._end_animation()
-        except Exception as err:
-            print err
-            self.close()
-        # end try
+        self._end_animation()
     # end def cancel
 
     def _start_animation(self):
@@ -231,7 +252,8 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
     def _get_start_geometry(self):
         """The optimal geometry for the dialog in it's smallest form.
 
-        @return a QRect with the correct geometry data.
+        Returns:
+            A QRect with the correct geometry data.
         """
         desktop = QtWidgets.QApplication.instance().desktop()
         available_geometry = desktop.screenGeometry(QtWidgets.QCursor().pos())
@@ -245,7 +267,8 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
     def _get_display_geometry(self):
         """The optimal geometry for the final display appearance.
 
-        @return a QRect with the correct geometry data.
+        Returns:
+            A QRect with the correct geometry data.
         """
         desktop = QtWidgets.QApplication.instance().desktop()
         available_geometry = desktop.screenGeometry(QtWidgets.QCursor().pos())
@@ -259,7 +282,8 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
     def _get_end_geometry(self):
         """The optimal geometry for the final display appearance.
 
-        @return a QRect with the correct geometry data.
+        Returns:
+            A QRect with the correct geometry data.
         """
         desktop = QtWidgets.QApplication.instance().desktop()
         available_geometry = desktop.screenGeometry(QtWidgets.QCursor().pos())
@@ -275,5 +299,6 @@ class ConfirmDialog(utility.ui_class(__file__, 'ConfirmDialog')):
 if __name__ == '__main__':
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    dialog = ConfirmDialog()
+    cd = ConfirmDialog(auto_raise=False)
+    cd.show()
     sys.exit(app.exec_())
